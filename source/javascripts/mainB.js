@@ -5,9 +5,9 @@ jsPlumb.ready(function () {
     numWindows = numWindows + 1;
 
     if($(this).data('sidebar')=='yes') {
-      $(this).append("<span class='hasSide'></span><nav class='flowActions'><span class='add'>new</span><span class='image'>img</span></nav>");
+      $(this).append("<span class='hasSide'></span><nav class='flowActions'><span class='add'>new item</span><span class='image'>view img</span></nav>");
     } else {
-      $(this).append("<nav class='flowActions'><span class='add'>add</span></nav>");
+      $(this).append("<nav class='flowActions'><span class='add'>new item</span></nav>");
     }
 
     var leftPos = $(this).css('left');
@@ -44,7 +44,7 @@ jsPlumb.ready(function () {
   sourceStyle = {
     strokeStyle: "#ff5a5f",
     fillStyle: "white",
-    radius: 4,
+    radius: 3,
     lineWidth: 1.2 
   },
   targetStyle = {
@@ -87,11 +87,13 @@ jsPlumb.ready(function () {
     connector: [ "Flowchart", 
       { 
         stub: 11, 
-        gap: 10, 
-        cornerRadius: 7, 
-        alwaysRespectStubs: false 
+        gap: 15, 
+        cornerRadius: 13, 
+        alwaysRespectStubs: false,
+        midpoint: .5 
       } 
     ],
+    //connector: ["StateMachine", {margin : 20, curviness: 30, proximityLimit: 100}],
     hoverPaintStyle: endpointHoverStyle,
     connectorHoverStyle: connectorHoverStyle
   }
@@ -152,10 +154,10 @@ jsPlumb.ready(function () {
         }
       }
     });
+  });
 
-    $( window ).resize(function() {
-      repaint();
-    });
+  $( window ).resize(function() {
+    repaint();
   });
 
   ///// START ADD NEW BOX ///////
@@ -167,6 +169,7 @@ jsPlumb.ready(function () {
       previosTopOffset = clicked.offset().top + clicked.outerHeight() + 40,
       Div = $('<div>', { id: "flowchartWindow" + numWindows + "", class:"dyno" }).appendTo('#canvas').css({top: previosTopOffset, left: left});
 
+
     instance.makeSource("flowchartWindow" + numWindows + "", makeSourceSettings);
     instance.makeTarget("flowchartWindow" + numWindows + "", makeTargetSettings);
 
@@ -175,15 +178,16 @@ jsPlumb.ready(function () {
     
     instance.connect({ source: clicked.attr('id'), target:"flowchartWindow" + numWindows + "" });
 
+    $(Div).attr({"data-sidebar":"yes","data-image":"", "data-description":""});
     $(Div).addClass('window');
 
     repaint();
 
     // for now a sidebar data attr is not added, but woudl liek to build this in when I offer image upload, so leaving it here
     if($(this).data('sidebar')=='yes') {
-      $(Div).append("<span class='hasSide'></span><nav class='flowActions'><span class='add'>new</span><span class='image'>img</span></nav><form action='#'' class='nameMe' id='form'><input type='text' placeholder='Enter Label'><input type='submit'></form>");
+      $(Div).append("<span class='hasSide'></span><nav class='flowActions'><span class='add'>new item</span><span class='image'>view img</span></nav><form action='#'' class='nameMe' id='form'><input type='text' placeholder='Enter Label'><input type='submit'></form>");
     } else {
-      $(Div).append("<nav class='flowActions'><span class='add'>add</span></nav><form action='#'' class='nameMe' id='form'><input type='text' placeholder='Enter Label'><input type='submit'></form>");
+      $(Div).append("<nav class='flowActions'><span class='image empty'>add image</span><span class='add'>new item</span></nav><form action='#'' class='nameMe' id='form'><input type='text' placeholder='Enter Label'><input type='submit'></form>");
     }
 
     $(".nameMe input[type='text']").focus();
@@ -222,8 +226,13 @@ jsPlumb.ready(function () {
     description = $(toLoad).data('description'),
     copy = $(toLoad).find('p').text();
 
+    console.log(image);
 
-    $('aside').append("<h3>Flow Step:<span>" + copy + "</span></h3><img src='../images/" + image + "'><p>"+ description +"</p>")
+    if(image != ''){
+      $('aside').append("<h3>Flow Step:<span>" + copy + "</span></h3><img src='../images/" + image + "'><p>"+ description +"</p>")
+    } else {
+      $('aside').append("<h3>Flow Step:<span>" + copy + "</span></h3><img src='../images/faces.png'><form><input type='file'></form>")
+    }
   }
 
   function closePanel(){
