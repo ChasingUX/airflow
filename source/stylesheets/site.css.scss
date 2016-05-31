@@ -1,0 +1,333 @@
+@charset "utf-8";
+@import "normalize";
+
+$red: #ff5a5f;
+$light-grey: #f5f5f5;
+$text-grey: #3B3D3E;
+$text-grey-light: #82888a;
+$aqua: #00d1c1;
+
+@font-face { font-family: 'webfont0'; src: url('fonts/Circular Air-Black Italic.ttf'); }
+@font-face { font-family: 'webfont1'; src: url('fonts/Circular Air-Black.ttf'); }
+@font-face { font-family: 'webfont3'; src: url('fonts/Circular Air-Bold.ttf'); }
+@font-face { font-family: 'webfont5'; src: url('fonts/Circular Air-Book.ttf'); }
+@font-face { font-family: 'webfont6'; src: url('fonts/Circular Air-Light Italic.ttf'); }
+@font-face { font-family: 'webfont7'; src: url('fonts/Circular Air-Light.ttf'); }
+@font-face { font-family: 'webfont9'; src: url('fonts/Circular Air-Medium.ttf'); }
+
+* {
+  box-sizing: border-box;  
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $light-grey;
+  color: $text-grey;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.2em;
+  font-size: 16px;
+  font-family: 'webfont5';
+}
+
+ul, li {
+  list-style: none;
+}
+
+header {
+  width: 100%;
+  background: $red;
+  height: 45px;
+  text-align: right;
+  position: relative;
+  z-index: 1000;
+
+  svg {
+    height: 46px;
+    display: inline-block;
+    margin-left: 15px;
+    float: left;
+  }
+
+  h3 {
+    font-weight: normal;
+    font-family: 'webfont1';
+    color: white;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    font-size: 18px;
+    line-height: 45px;
+    margin-left: -5px;
+    float: left;
+  }
+}
+
+.zoom {
+  margin: 0 18px 0 0;
+  position: relative;
+  top: 10px;
+
+  span {
+    display: inline-block;
+    color: white;
+    font-size: 13px;
+    margin-right: 5px;
+  }
+}
+
+.node {
+  border-radius: 2px;
+  color: $red;
+  background-color: white;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: 'webfont5';
+  margin: 0;
+  text-align: center;
+  line-height: 23px;
+  height: 24px;
+  width: 24px;
+}
+
+$sidebarWidth: 350px;
+
+aside {
+  width: $sidebarWidth;
+  position: fixed;
+  left: -$sidebarWidth;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  padding: 75px 30px;
+  transition: all .5s ease;
+
+  p {
+    font-size: 13px;
+    margin: 15px 0;
+  }
+
+  h3 {
+    font-weight: normal;
+    margin-bottom: 15px;
+    color: $red;
+    display: inline-block;
+    padding-right: 50px;
+
+    span {
+      margin-left: 5px;
+      color: $text-grey;
+    }
+  }
+
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .close {
+    text-decoration: none;
+    position: absolute;
+    top: 76px;
+    right: 30px;
+    height: 15px;
+    width: 15px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 10;
+    background-image: url("../images/close.svg");
+  }
+}
+
+.wrapper {
+  height: calc(100% - 45px);
+  //width: calc(100% - #{$sidebarWidth} - 10px);
+  width: 100%;
+  position: absolute;
+  //left: calc(#{$sidebarWidth} + 10px);
+  left:0; 
+  top: 45px;
+  overflow: visible;
+  transition: all .5s ease;
+}
+
+.panel {
+  aside {
+    left: 0;
+  }
+
+  .wrapper {
+    left: calc(#{$sidebarWidth} + 10px);
+    width: calc(100% - #{$sidebarWidth} - 10px);
+  }
+}
+
+::-webkit-input-placeholder {
+   color: red;
+}
+
+.nameMe {
+  vertical-align: middle;
+  display: table-cell; 
+  
+  input {
+    border: 0;
+    outline: 0;
+    text-align: center;
+    color: #565a5c;
+    max-width: 110px;
+    font-size: 12px;
+
+    &:focus {
+      outline: 0;
+      border: 0;
+    }
+  }
+  input[type='submit'] {
+    display: none;
+  }
+}
+
+.flowActions {
+  position: absolute;
+  right: 5px;
+  left: 5px;
+  bottom: 6px;
+  opacity: 0;
+}
+
+.add {
+  float: right;
+  border: 1px solid rgba(255, 90, 95, 0.25);
+  color: rgba(255, 90, 95, 0.81);
+
+  &:hover {
+    background: $red;
+    border: 1px solid $red;
+    color: white;
+  }
+}
+
+.image {
+  float: left;
+  border: 1px solid rgba(0, 209, 193, 0.25);
+  color: #00d1c1;
+
+  &:hover {
+    background: $aqua;
+    border: 1px solid $aqua;
+    color: white;
+  }
+}
+
+.add, .image {
+  cursor: pointer;
+  text-align: center;
+  height: 16px;
+  width: 48%;
+  font-family: 'webfont3';
+  font-size: 8px;
+  letter-spacing: .2px;
+  line-height: 1.5;
+  padding: 0;
+  border-radius: 4px;
+  display: inline-block;
+  transition: all .2s ease;
+}
+
+.hover {
+  .flowActions {
+    opacity: 1;
+  }
+}
+
+.flow {
+  .hover {
+    .hasSide {
+      opacity: 0;
+    }
+  }
+}
+
+.hasSide {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #E8E8E8;
+}
+
+.tools {
+  position: absolute;
+  right: 17px;
+  top: 12px;
+  z-index: 5000;
+  a {
+    padding: 2px 8px 2px 6px;
+    border: 1px solid #696969;
+    border-radius: 2px;
+    margin-left: 1px;
+    display: inline-block;
+    cursor: pointer;
+    opacity: .7;
+    transition: opacity .2s ease;
+    color: #3A3A3A;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'webfont9';
+  }
+}
+.dragToggle {
+  span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: 2px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+    opacity: 1;
+
+    svg {
+      width: 100%;
+      display: block;
+      height: auto;
+
+      * {
+        fill: #000;
+        stroke: #000;
+      }
+    }
+  }
+  &:hover {
+    opacity: 1;
+  }
+
+  &.on {
+    opacity: 1;
+    color: white;
+    border: 1px solid $red;
+    background-color: $red;
+
+    svg {
+      * {
+        fill: #fff;
+        stroke: #fff;
+      }
+    }
+  }
+}
+
+.move {
+  .add, .image {
+    display: none;
+  }
+}

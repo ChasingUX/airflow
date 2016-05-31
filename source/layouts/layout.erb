@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title><%= current_page.data.title || "Flow" %></title>
+
+    <link rel="apple-touch-icon" href="https://a0.muscache.com/airbnb/static/icons/apple-touch-icon-76x76-3b313d93b1b5823293524b9764352ac9.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="https://a0.muscache.com/airbnb/static/icons/apple-touch-icon-76x76-3b313d93b1b5823293524b9764352ac9.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="https://a1.muscache.com/airbnb/static/icons/apple-touch-icon-120x120-52b1adb4fe3a8f825fc4b143de12ea4b.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="https://a0.muscache.com/airbnb/static/icons/apple-touch-icon-152x152-7b7c6444b63d8b6ebad9dae7169e5ed6.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://a2.muscache.com/airbnb/static/icons/apple-touch-icon-180x180-bcbe0e3960cd084eb8eaf1353cf3c730.png" />
+    <link rel="icon" sizes="192x192" href="https://a1.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png" />
+    <link rel="shortcut icon" sizes="76x76" type="image/x-icon" href="https://a1.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico" />
+    
+    <%= stylesheet_link_tag :plumbDefaults %>
+    <%= stylesheet_link_tag :plumbDemo %>
+    <%= stylesheet_link_tag :site %>
+  </head>
+
+  <body class="<%= page_classes %> flow" data-demo-id="flowchart">
+    <%= yield %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js" type="text/javascript"></script>
+    <%= javascript_include_tag :jsBezier %>
+    <%= javascript_include_tag :mottle %>
+    <%= javascript_include_tag :biltong %>
+    <%= javascript_include_tag :katavorio %>
+    <%= javascript_include_tag :util %>
+    <%= javascript_include_tag :browserUtil %>
+    <%= javascript_include_tag :jsPlumb %>
+    <%= javascript_include_tag :domAdapter %>
+    <%= javascript_include_tag :overlayComponent %>
+    <%= javascript_include_tag :endpoint %>
+    <%= javascript_include_tag :connection %>
+    <%= javascript_include_tag :anchors %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :connectorsBezier %>
+    <%= javascript_include_tag :connectorsStatemachine %>
+    <%= javascript_include_tag :connectorsFlowchart %>
+    <%= javascript_include_tag :renderersSvg %>
+    <%= javascript_include_tag :baseLibraryAdapter %>
+    <%= javascript_include_tag :domJsPlumb %>
+    <%= javascript_include_tag :mainB %>
+  </body>
+</html>

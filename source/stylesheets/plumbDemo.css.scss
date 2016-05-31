@@ -1,0 +1,194 @@
+.jtk-demo-canvas {
+    height:100%;
+}
+
+._jsPlumb_connector {
+    z-index:9;
+}
+
+._jsPlumb_endpoint {
+    z-index:12;
+    opacity:0.8;
+    cursor:pointer;
+}
+
+._jsPlumb_overlay {
+    background-color: white;
+    color: #434343;
+    font-weight: 400;
+    padding: 4px;
+    z-index:10;
+
+}
+
+._jsPlumb_overlay._jsPlumb_hover {
+    color: #434343;
+}
+
+path {
+    cursor:pointer;
+}
+
+.demo {
+    /* for IE10+ touch devices */
+    touch-action:none;
+}
+
+.move .window {
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.flow .window {
+  cursor: pointer;
+}
+
+.window {
+  font-family: 'webfont5';
+  border-radius: 6px;
+  width: 130px;
+  height: 70px;
+  text-align: center;
+  z-index: 20;
+  position: absolute;
+  background-color: white;
+  padding: 8px;
+  font-size: 12px;
+  display: table;
+  box-shadow: 0px 0px 10px rgba(115, 140, 134, 0.1);
+  transition: box-shadow .2s ease, border .2s ease;
+
+  p {
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+
+.panelShowing {
+  //order: 1px solid #00d1c1;
+
+  &:hover {
+    //border: 1px solid #00d1c1;
+  }
+}
+
+.flowchart-demo .window:hover {
+  //outline: 1px solid #007A87;
+  box-shadow: 0px 0px 10px rgba(115, 140, 134, 0.2);
+}
+
+.jsplumb-drag { 
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+  border-color: #ff5a5f;
+}
+
+.dyno {
+  top: 20px;
+  left: 20px;
+}
+
+#flowchartWindow1 {
+    top: 20em;
+    left: calc(20% - 65px);
+}
+
+#flowchartWindow2 {
+    top: 7em;
+    left: calc(50% - 65px);
+}
+
+#flowchartWindow3 {
+    top: 20em;
+    left: calc(80% - 65px);
+}
+
+#flowchartWindow4 {
+    top: 20em;
+    left: calc(50% - 65px);
+}
+
+.flowchart-demo .jsplumb-connector {
+    z-index: 4;
+}
+
+.flowchart-demo .jsplumb-endpoint, .endpointTargetLabel, .endpointSourceLabel {
+    z-index: 21;
+    cursor: pointer;
+}
+
+.flowchart-demo .active {
+  border-radius: 50%;
+  background: #00D1C1;
+}
+
+// .flowchart-demo .hover {
+//     border: 1px dotted red;
+// }
+
+
+// jsplumb-endpoint jsplumb-endpoint-anchor jsplumb-draggable jsplumb-droppable jsplumb-endpoint-connected
+
+// jsplumb-endpoint jsplumb-endpoint-anchor jsplumb-draggable jsplumb-droppable jsplumb-endpoint-connected
+
+// jsplumb-endpoint jsplumb-endpoint-anchor jsplumb-draggable jsplumb-droppable jsplumb-endpoint-connected
+
+// jsplumb-endpoint jsplumb-endpoint-anchor jsplumb-draggable jsplumb-droppable endpointDrag jsplumb-endpoint-connected
+// jsplumb-endpoint jsplumb-endpoint-anchor jsplumb-draggable jsplumb-droppable endpointDrag jsplumb-endpoint-connected
+
+// jsplumb-endpoint jsplumb-endpoint-anchor jsplumb-draggable jsplumb-droppable jsplumb-endpoint-connected
+
+
+.jsplumb-endpoint {
+  //opacity: 0;
+  padding: 4px;
+  //transform: translateX(-5px) translateY(-4px);
+  transition: opacity .2s ease;
+
+  // &.jsplumb-hover {
+  //   opacity: 0;
+  // }
+
+  //  &.jsplumb-endpoint-connected {
+  //   opacity: 0;
+  // }
+
+  // &.endpointDrag {
+  //   opacity: 1;
+  // }
+  
+ 
+
+  // &.jsplumb-droppable {
+  //   opacity: 1;
+  // }
+}
+
+.flowchart-demo .aLabel {
+  background-color: #F5F5F5;
+  padding: 1px 5px;
+  font-size: 10px;
+  color: #007A87;
+  z-index: 21;
+  font-family: 'webfont9';
+  cursor: pointer;
+  display: none;
+}
+
+.flowchart-demo .aLabel.jsplumb-hover {
+  color: #ff5a5f;
+}
+
+// .window.jsplumb-connected {
+//     border: 1px solid #FF5A5F;
+// }
+
+path, .jsplumb-endpoint {
+    cursor: pointer;
+}
+
+.jsplumb-overlay {
+    background-color:transparent;
+}
