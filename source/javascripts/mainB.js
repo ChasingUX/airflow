@@ -158,20 +158,6 @@ jsPlumb.ready(function () {
     });
   });
 
-  //switching between move and flow modes
-  $(".tools a").on('click', function(){
-    var thisType = $(this).attr('id');
-    $('body').removeClass('move flow').addClass(thisType);
-
-    $(".dragToggle").toggleClass('on');
-
-    if($('#move').hasClass('on')) {
-      enableDrag();
-    } else {
-      disableDrag();
-    }
-  })
-
   ///// START ADD NEW BOX ///////
 
   function AddDiv(clicked) {
@@ -256,5 +242,35 @@ jsPlumb.ready(function () {
 
   $('.close').on('click', function(){
     closePanel();
+  });
+
+  $(".tools a").on('click', function(){
+    var thisType = $(this).attr('id');
+    $('body').removeClass('move flow').addClass(thisType);
+
+    $(".dragToggle").toggleClass('on');
+
+    if($('#move').hasClass('on')) {
+      enableDrag();
+    } else {
+      disableDrag();
+    }
+  });
+
+  $(document).on('keydown', function(e){
+    var shifted = e.shiftKey;
+    if(shifted == true) {
+      $('body').removeClass('flow').addClass("move");
+      $(".dragToggle").toggleClass('on');
+      enableDrag();
+    } 
+  });
+
+  $(document).on('keyup', function(e){
+    if(e.keyCode == 16) {
+      $('body').removeClass('move').addClass("flow");
+      $(".dragToggle").toggleClass('on');
+      disableDrag();
+    } 
   });
 }); 
